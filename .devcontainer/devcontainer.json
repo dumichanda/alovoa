@@ -1,0 +1,24 @@
+// .devcontainer/devcontainer.json
+{
+  "name": "Alovoa Dev",
+  "build": { "dockerfile": "Dockerfile" },
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "forwardPorts": [8080],
+  "postCreateCommand": "cd /workspace && mvnw clean package -DskipTests",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "vscjava.vscode-spring-boot-dashboard",
+        "redhat.vscode-yaml",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
+  "remoteEnv": {
+    "SPRING_DATASOURCE_URL": "jdbc:postgresql://ep-lively-math-a4foihwb-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require",
+    "SPRING_DATASOURCE_USERNAME": "neondb_owner",
+    "SPRING_DATASOURCE_PASSWORD": "npg_PfWQsNtGp7O0"
+  }
+}
